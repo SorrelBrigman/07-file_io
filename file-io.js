@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
-const { readFile } = require("fs");
+const { readFileSync } = require("fs");
 
-let [,,...arg]  = process.argv;
-// arg = arg.toString();
+let arg  = process.argv[2];
 
 if(arg) {
-  readFile(`${arg}`, "", (err, data)=>{
-    if(err) return console.error(err);
-    process.stdout.write(data);
-  })
-} else {
-  process.exit();
+  try{
+    let data = readFileSync(arg);
+    process.stdout.write(`${data}`);
+  } catch(e){
+    console.error();
+  }
 }

@@ -3,10 +3,10 @@
 const { readFile } = require("fs");
 
 let [,,...arg]  = process.argv;
-arg = arg.toString();
+// arg = arg.toString();
 
 if(arg) {
-  readFile(arg, "", (err, data)=>{
+  readFile(`${arg}`, "", (err, data)=>{
     if(err) return console.error(err);
     process.stdout.write(data);
   })
